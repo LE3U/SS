@@ -1,5 +1,12 @@
 {
   "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/.*\\.(png|jpg|jpeg|gif|webp|svg|mp4|webm|mov)$",
+      "dest": "/$0"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
