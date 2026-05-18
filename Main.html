@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | BS Computer Engineering</title>
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #ffffff;
+            --accent: #ff7e5f;
+            --bg-dark: #0f2027;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        #plexus-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+        }
+
+        nav {
+            position: fixed;
+            top: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 1000;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex; gap: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        nav a {
+            color: white; text-decoration: none; font-size: 0.85rem;
+            padding: 8px 15px; border-radius: 20px;
+            transition: 0.3s; cursor: pointer;
+        }
+
+        nav a.active, nav a:hover {
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .container { margin-top: 80px; padding: 20px; display: flex; justify-content: center; }
+
+        section {
+            display: none; width: 100%; max-width: 1100px;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        section.active { display: block; }
+
+        #home.active {
+            height: calc(100vh - 120px);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px; margin-bottom: 20px;
+        }
+
+        h1 { margin-bottom: 20px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            background: var(--glass);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: 0.4s;
+            display: flex; flex-direction: column;
+        }
+
+        /* Portrait photos for Main Sections */
+        .photo-item img { 
+            width: 100%; height: 450px; 
+            object-fit: cover; object-position: top; 
+        }
+
+        .photo-desc {
+            padding: 15px; font-size: 0.9rem; min-height: 100px;
+            background: rgba(0,0,0,0.5); line-height: 1.5;
+        }
+
+        .slot {
+            border: 2px dashed var(--glass-border);
+            height: 250px; display: flex; align-items: center; justify-content: center;
+            border-radius: 15px; cursor: pointer; flex-direction: column; transition: 0.3s;
+        }
+
+        /* FIX: HOBBY DISPLAY GRID */
+        .hobby-display-container { display: none; margin-top: 30px; animation: slideIn 0.5s ease; }
+        
+        .hobby-item {
+            background: var(--glass);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            aspect-ratio: 16/9; /* Forces landscape */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        video, .hobby-img { 
+            width: 100%; 
+            height: 100%;
+            border-radius: 10px; 
+            background: #000; 
+            object-fit: contain; /* Ensures original image/video is not cut off */
+        }
+
+        .typing::after { content: '|'; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <canvas id="plexus-bg"></canvas>
+
+    <nav>
+        <a onclick="showSection('home')" id="link-home" class="active">Home</a>
+        <a onclick="showSection('about')" id="link-about">About Me</a>
+        <a onclick="showSection('family')" id="link-family">Family</a>
+        <a onclick="showSection('achievements')" id="link-achievements">Achievements</a>
+        <a onclick="showSection('hobbies')" id="link-hobbies">Hobbies</a>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="active">
+            <div class="glass-card" style="text-align: center; max-width: 600px;">
+                <img src="shan3.png" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin-bottom: 20px;">
+                <h1>Welcome!</h1>
+                <p class="typewriter" data-text="BS Computer Engineering Student. Merging the logic of hardware with the beauty of design."> </p>
+            </div>
+        </section>
+
+        <section id="about">
+            <h1>About Me Today</h1>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="shan2.png"><div class="photo-desc typewriter" data-text="The Professional: Driven by purpose, defined by excellence in the world of engineering."></div></div>
+                <div class="photo-item"><img src="shan4.png"><div class="photo-desc typewriter" data-text="The Explorer: Always seeking new paths, adventures, and meaningful experiences."></div></div>
+                <div class="photo-item"><img src="shan5.png"><div class="photo-desc typewriter" data-text="The Elegance: Confidence and timeless beauty found in every detail."></div></div>
+                <div class="photo-item"><img src="shan1.png"><div class="photo-desc typewriter" data-text="The Daily Drive: Reliable, steady, and prepared for the everyday journey ahead."></div></div>
+                <div class="photo-item"><img src="shan3.png"><div class="photo-desc typewriter" data-text="The Vision: Inspired by dreams and focused on the future."></div></div>
+            </div>
+        </section>
+
+        <section id="family">
+            <h1>My Family</h1>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="Thefads.png"><div class="photo-desc typewriter" data-text="My Father: A hardworking man who sacrifices being far from home to provide a better life for our family. Even from a distance, his efforts and love continue to guide us."></div></div>
+                <div class="photo-item"><img src="Datrio.png"><div class="photo-desc typewriter" data-text="My Siblings: We may not always be close, but we share a bond built by the same experiences, struggles, and memories growing up together."></div></div>
+                <div class="photo-item"><img src="Themads.png"><div class="photo-desc typewriter" data-text="The Group of powerpuffgirls: We may be a broken family, but despite the pain and imperfections, we continue to move forward with strength, love, and hope for better days."></div></div>
+                <div class="photo-item"><img src="motherearth.png"><div class="photo-desc typewriter" data-text="My Mother: A strong and selfless woman who chose to stay and take care of us through every challenge. Her love, patience, and sacrifices became the heart of our home."></div></div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <h1>Achievements</h1>
+            <div class="glass-card"><h3>Elementary</h3><p class="typewriter" data-text="Salutatorian."></p></div>
+            <div class="glass-card"><h3>Junior High School</h3><p class="typewriter" data-text="With Honors."></p></div>
+            <div class="glass-card"><h3>Senior High School</h3><p class="typewriter" data-text="With High Honors."></p></div>
+            <div class="glass-card"><h3>Pageantry</h3><p class="typewriter" data-text="Ms. Friendly Environment 2017 and Mutya ng Buluan 1st Runner up."></p></div>
+            <div class="glass-card"><h3>Modeling Industry</h3><p class="typewriter" data-text="Former brand Photoshoot and Runway Model."></p></div>
+        </section>
+
+        <section id="hobbies">
+            <h1>My Hobbies</h1>
+            <div class="photo-grid">
+                <div class="slot" onclick="openHobby('dance')"><span>💃 Dance</span></div>
+                <div class="slot" onclick="openHobby('arts')"><span>✍🏻 Arts</span></div>
+                <div class="slot" onclick="openHobby('music')"><span>🎶 Music</span></div>
+            </div>
+
+            <div id="dance-display" class="hobby-display-container">
+                <h3 class="typewriter" data-text="Dance Performances" style="margin-bottom:15px"></h3>
+                <div class="photo-grid">
+                    <div class="hobby-item"><video controls><source src="shanvid1.mp4"></video></div>
+                    <div class="hobby-item"><video controls><source src="shanvid2.mp4"></video></div>
+                    <div class="hobby-item"><video controls><source src="shanvid.mp4"></video></div>
+                </div>
+            </div>
+
+            <div id="arts-display" class="hobby-display-container">
+                <h3 class="typewriter" data-text="My Creative Portfolio" style="margin-bottom:15px"></h3>
+                <div class="photo-grid">
+                    <div class="hobby-item"><img src="shanimg1.png" class="hobby-img" alt="Artwork 1"></div>
+                    <div class="hobby-item"><img src="shanimg2.png" class="hobby-img" alt="Artwork 2"></div>
+                    <div class="hobby-item"><img src="shanimg3.png" class="hobby-img" alt="Artwork 3"></div>
+                </div>
+            </div>
+
+            <div id="music-display" class="hobby-display-container">
+                <h3 class="typewriter" data-text="Music & Vocals" style="margin-bottom:15px"></h3>
+                <div class="photo-grid">
+                    <div class="hobby-item"><video controls><source src="shanvid4.mp4"></video></div>
+                    <div class="hobby-item"><video controls><source src="shanvid5.mp4"></video></div>
+                    <div class="hobby-item"><video controls><source src="shanvid6.mp4"></video></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('plexus-bg');
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+        const dotCount = 80;
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            dots = [];
+            for (let i = 0; i < dotCount; i++) {
+                dots.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+            dots.forEach((d, i) => {
+                d.x += d.vx; d.y += d.vy;
+                if (d.x < 0 || d.x > canvas.width) d.vx *= -1;
+                if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
+                ctx.beginPath(); ctx.arc(d.x, d.y, 2, 0, Math.PI * 2); ctx.fill();
+                for (let j = i + 1; j < dots.length; j++) {
+                    let d2 = dots[j];
+                    let dist = Math.hypot(d.x - d2.x, d.y - d2.y);
+                    if (dist < 150) {
+                        ctx.lineWidth = 1 - dist / 150;
+                        ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(d2.x, d2.y); ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas(); draw();
+
+        function showSection(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            const target = document.getElementById(id);
+            target.classList.add('active');
+            document.getElementById('link-' + id).classList.add('active');
+            document.body.style.overflow = (id === 'home') ? 'hidden' : 'auto';
+            target.querySelectorAll('.typewriter').forEach(el => type(el));
+        }
+
+        function type(element) {
+            const text = element.getAttribute('data-text');
+            if(!text) return;
+            element.innerHTML = "";
+            element.classList.add('typing');
+            let i = 0;
+            if(element.timer) clearInterval(element.timer);
+            element.timer = setInterval(() => {
+                if (i < text.length) { element.innerHTML += text.charAt(i); i++; } 
+                else { clearInterval(element.timer); element.classList.remove('typing'); }
+            }, 35);
+        }
+
+        function openHobby(cat) {
+            document.querySelectorAll('.hobby-display-container').forEach(v => v.style.display = 'none');
+            const target = document.getElementById(cat + '-display');
+            target.style.display = 'block';
+            target.querySelectorAll('.typewriter').forEach(el => type(el));
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = () => showSection('home');
+    </script>
+</body>
+</html>
